@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.streamlit/secrets.toml
+*.key
+*.pem
+
+data/prep_ai.db
+data/*.db
+
+.DS_Store
+.vscode/
+.idea/

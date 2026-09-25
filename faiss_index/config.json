@@ -1,0 +1,13 @@
+{
+  "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+  "dimension": 384,
+  "chunk_size": 350,
+  "chunk_overlap": 60,
+  "total_chunks": 2998,
+  "subjects": [
+    "Biology",
+    "Chemistry",
+    "English",
+    "Physics"
+  ]
+}

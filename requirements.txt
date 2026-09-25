@@ -1,0 +1,13 @@
+# Prep AI V3.2 — Python 3.12
+streamlit==1.64.0
+google-genai==2.25.0
+sentence-transformers==6.1.0
+faiss-cpu==1.15.1
+gdown==6.4.0
+ddgs==9.16.0
+crewai>=1.15.3,<2
+reportlab==5.0.1
+pypdf>=6.0,<7
+python-docx>=1.2,<2
+numpy>=2.0,<3
+pandas>=2.2,<3
