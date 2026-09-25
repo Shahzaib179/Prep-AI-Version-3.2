@@ -1036,14 +1036,48 @@ def render_quiz(conn: sqlite3.Connection, student_id: str) -> None:
 
         for i, q in enumerate(questions):
             selected = answers.get(i, "Skipped")
-            if selected == q["answer"]:
-                st.write(f"✅ {i+1}. Correct")
+            is_correct = selected == q["answer"]
+
+            # Question statement
+            st.markdown(f"### Q{i + 1}. {q['question']}")
+
+            if is_correct:
+                st.success("✅ Correct")
             else:
-                st.write(
-                    f"❌ {i+1}. Your answer: {selected}; "
-                    f"Correct: {q['answer']}"
+                st.error("❌ Incorrect")
+
+            # Student answer
+            if selected == "Skipped":
+                st.warning("Your answer: Skipped")
+            else:
+                student_text = q["options"].get(
+                    selected,
+                    selected
                 )
-                st.caption(q.get("explanation", ""))
+                st.write(
+                    f"**Your answer:** {selected}. {student_text}"
+                )
+
+            # Correct answer
+            correct_letter = q["answer"]
+            correct_text = q["options"].get(
+                correct_letter,
+                correct_letter
+            )
+
+            st.write(
+                f"**Correct answer:** "
+                f"{correct_letter}. {correct_text}"
+            )
+
+            # Explanation
+            explanation = q.get("explanation", "").strip()
+
+            if explanation:
+                with st.expander("📖 Explanation"):
+                    st.write(explanation)
+
+            st.divider()
 
         if st.button("Practice My Weak Topics"):
             # Do NOT change st.session_state["page"] here. The sidebar radio
